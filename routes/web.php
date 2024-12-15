@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
-Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoice.index');
+Route::resource('invoices', InvoiceController::class);
