@@ -47,17 +47,21 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Invoice $invoice)
     {
-        //
+        return view('invoices.edit')
+                ->with('invoice', $invoice);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Invoice $invoice)
     {
-        //
+        $invoice->fill($request->all());
+        $invoice->save();
+
+        return to_route('invoices.index');
     }
 
     /**

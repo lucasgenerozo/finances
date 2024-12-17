@@ -1,5 +1,5 @@
 @push('scripts')
-    <script src="{{ asset('js/invoices/amount_input.js') }}"></script>
+    <script src="{{ asset('assets/js/invoices/amount_input.js') }}"></script>
 @endpush
 
 <input type="text"
@@ -7,4 +7,5 @@
        name="amount"
        id="amount"
        @isset($required) required @endisset
+       @isset($value) value="{{ $value }}" @endisset
        oninput="formatAmount(this)">
