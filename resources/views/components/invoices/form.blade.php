@@ -5,6 +5,8 @@
         @method('PUT')
     @endisset
 
+    <x-alerts.error />
+
     <div class="row">
         <div class="col-4">
             <label class="form-label" for="description">Descrição*:</label>

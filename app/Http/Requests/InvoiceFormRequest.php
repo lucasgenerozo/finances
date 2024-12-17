@@ -11,7 +11,7 @@ class InvoiceFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class InvoiceFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => ['required']
+            'description' => ['required'],
+            'amount' => ['required', 'min:0', 'decimal:2'],
+            'type' => ['required'],
         ];
     }
 }

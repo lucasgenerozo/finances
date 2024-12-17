@@ -33,7 +33,8 @@ class InvoiceController extends Controller
     {
         Invoice::create($request->all());
 
-        return to_route('invoices.index');
+        return to_route('invoices.index')
+                ->with('message.success', 'Gasto criado com sucesso');
     }
 
     /**
@@ -61,7 +62,8 @@ class InvoiceController extends Controller
         $invoice->fill($request->all());
         $invoice->save();
 
-        return to_route('invoices.index');
+        return to_route('invoices.index')
+                ->with('message.success', 'Gasto alterado com sucesso');
     }
 
     /**

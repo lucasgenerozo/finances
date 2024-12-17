@@ -2,5 +2,8 @@
 
 todo
 - [X] Tratar input amount
-- [ ] Implementar regras de validação no invoice form request
-- [ ] Implementar alerts (usando components e flash messages)
+- [X] Implementar regras de validação no invoice form request
+- [X] Implementar alerts (usando components e flash messages)
+- [ ] Implementar messages dos erros no InvoiceFormRequest
+- [ ] Testar alerts
+- [ ] Implementar alerts no layout?
