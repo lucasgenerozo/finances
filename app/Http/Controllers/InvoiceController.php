@@ -51,7 +51,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $invoice)
+    public function edit(Invoice $invoice)
     {
         return view('invoices.edit')
                 ->with('invoice', $invoice);
