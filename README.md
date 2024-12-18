@@ -5,5 +5,6 @@ todo
 - [X] Implementar regras de validação no invoice form request
 - [X] Implementar alerts (usando components e flash messages)
 - [ ] Implementar messages dos erros no InvoiceFormRequest
-- [ ] Testar alerts
-- [ ] Implementar alerts no layout?
+- [x] Testar alerts
+- [X] Implementar alerts no layout?
+- [ ] Relação com N:N com tags

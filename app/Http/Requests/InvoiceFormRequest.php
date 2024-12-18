@@ -23,8 +23,15 @@ class InvoiceFormRequest extends FormRequest
     {
         return [
             'description' => ['required'],
-            'amount' => ['required', 'min:0', 'decimal:2'],
+            'amount' => ['required', 'min:1', 'decimal:2'],
             'type' => ['required'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'description.required' => ''
         ];
     }
 }

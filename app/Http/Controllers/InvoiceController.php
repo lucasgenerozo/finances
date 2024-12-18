@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InvoiceFormRequest;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,11 @@ class InvoiceController extends Controller
     public function index()
     {
         $invoices = Invoice::all();
+        $successMessage = session('message.success');
 
         return view('invoices.index')
-                ->with('invoices', $invoices);
+                ->with('invoices', $invoices)
+                ->with('successMessage', $successMessage);
     }
 
     /**
@@ -29,7 +32,7 @@ class InvoiceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(InvoiceFormRequest $request)
     {
         Invoice::create($request->all());
 
@@ -48,7 +51,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invoice $invoice)
+    public function edit(Request $invoice)
     {
         return view('invoices.edit')
                 ->with('invoice', $invoice);
@@ -57,7 +60,7 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(InvoiceFormRequest $request, Invoice $invoice)
     {
         $invoice->fill($request->all());
         $invoice->save();

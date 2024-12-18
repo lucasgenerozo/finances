@@ -11,6 +11,8 @@
 </head>
 <body>
     <main class="container pt-5">
+        <x-alerts.error :errors="$errors" />
+
         {{ $slot }}
     </main>
 </body>

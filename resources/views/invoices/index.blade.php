@@ -1,10 +1,11 @@
 <?php $title = 'Listar Gastos' ?>
+
 <x-layout title="{{ $title }}">
+    <x-alerts.success :successMessage="$successMessage" />
+    
     <x-header title="{{ $title }}" />
     <a href="{{ route('invoices.create') }}" class="btn btn-success">Adicionar gasto</a>
 
-    <x-alerts.success />
-    <x-alerts.error />
 
     <div class="my-5">
         <div class="row border-bottom border-secondary mb-2 py-2">
