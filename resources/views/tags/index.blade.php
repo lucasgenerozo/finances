@@ -1,26 +1,22 @@
-<?php $title = 'Listar Gastos' ?>
+<?php $title = 'Listar Categorias' ?>
 
 <x-layout title="{{ $title }}">
     <x-alerts.success :successMessage="$successMessage" />
     
     <x-header title="{{ $title }}" />
-    <a href="{{ route('invoices.create') }}" class="btn btn-success">Adicionar gasto</a>
+    <a href="{{ route('tags.create') }}" class="btn btn-success">Adicionar categoria</a>
 
 
     <div class="my-5">
         <div class="row border-bottom border-secondary mb-2 py-2">
             <div class="col-3">Descrição</div>
-            <div class="col-2">Valor (em R$)</div>
-            <div class="col">Observação</div>
-            <div class="col">Classificações</div>
+            <div class="col-3">Gastos</div>
             <div class="col-1">Menu</div>
         </div>
-        @foreach ($invoices as $invoice)
-        <div class="row text-{{ $invoice->isEntrance() ? 'success' : 'danger' }} border-bottom border-secondary mt-1 mb-2 py-2">
-            <div class="col-3">{{ $invoice->description }}</div>
-            <div class="col-2">{{ $invoice->formattedAmount() }}</div>
-            <div class="col">{{ $invoice->observation }}</div>
-            <div class="col">{{ implode(', ', $invoice->tagsDescriptions()->toArray() ) }}</div>
+        @foreach ($tags as $tag)
+        <div class="row border-bottom border-secondary mt-1 mb-2 py-2">
+            <div class="col-3">{{ $tag->description }}</div>
+            <div class="col-3">{{ implode(', ', $tag->invoicesDescriptions()->toArray()) }}</div>
             <div class="col-1">
                 <div class="dropdown">
                     <a class="btn dropdown-toggle" href="javascript::void()" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -28,7 +24,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class="dropdown-item btn" href="{{ route('invoices.edit', $invoice->id) }}">
+                            <a class="dropdown-item btn" href="{{ route('tags.edit', $tag->id) }}">
                                 <x-icons.pencil_square />
                                 <span class="px-1 py-3">Editar</span>
                             </a>

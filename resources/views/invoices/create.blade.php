@@ -5,6 +5,6 @@
 
     <x-form.obligatory_tip />
 
-    <x-invoices.form action="{{ route('invoices.store') }}" :invoice="null" />
+    <x-invoices.form action="{{ route('invoices.store') }}" :invoice="null" :tags="$tags" />
 
 </x-layout>

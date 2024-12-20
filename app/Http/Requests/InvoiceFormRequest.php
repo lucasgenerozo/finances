@@ -27,11 +27,4 @@ class InvoiceFormRequest extends FormRequest
             'type' => ['required'],
         ];
     }
-
-    public function messages(): array
-    {
-        return [
-            'description.required' => ''
-        ];
-    }
 }

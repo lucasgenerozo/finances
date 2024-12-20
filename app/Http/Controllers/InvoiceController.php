@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InvoiceFormRequest;
 use App\Models\Invoice;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -26,7 +27,10 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoices.create');
+        $tags = Tag::all();
+        
+        return view('invoices.create')
+                ->with('tags', $tags);
     }
 
     /**
@@ -34,7 +38,9 @@ class InvoiceController extends Controller
      */
     public function store(InvoiceFormRequest $request)
     {
-        Invoice::create($request->all());
+        $invoice = Invoice::create($request->all());
+
+        $invoice->tags()->attach($request->tags);
 
         return to_route('invoices.index')
                 ->with('message.success', 'Gasto criado com sucesso');
@@ -53,8 +59,13 @@ class InvoiceController extends Controller
      */
     public function edit(Invoice $invoice)
     {
+        $tags = Tag::all();
+        $invoiceTagsIds = $invoice->tagsIds()->toArray();
+
         return view('invoices.edit')
-                ->with('invoice', $invoice);
+                ->with('invoice', $invoice)
+                ->with('tags', $tags)
+                ->with('invoiceTagsIds', $invoiceTagsIds); #query feita aqui pra ser feita só 1 vez
     }
 
     /**
@@ -64,6 +75,8 @@ class InvoiceController extends Controller
     {
         $invoice->fill($request->all());
         $invoice->save();
+
+        $invoice->tags()->sync($request->tags);
 
         return to_route('invoices.index')
                 ->with('message.success', 'Gasto alterado com sucesso');
