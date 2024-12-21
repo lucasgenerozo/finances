@@ -1,13 +1,6 @@
-# fé
+# Finances
+## Organize seu financeiro!
 
-todo
-- [X] Tratar input amount
-- [X] Implementar regras de validação no invoice form request
-- [X] Implementar alerts (usando components e flash messages)
-- [X] Implementar messages dos erros no InvoiceFormRequest
-- [X] Testar alerts
-- [X] Implementar alerts no layout?
-- [X] Relação com N:N com tags
-- [X] Implementar exclusao de invoices
-- [X] Implementar exclusao de tags
-- [X] Implementar "old()" nos forms
+Projeto bem simples feito para fixar os conhecimentos de Laravel (que ainda estou aprendendo)
+
+Irei desenvolver mais, contudo críticas e dicas são sempre bem vindas.
