@@ -28,7 +28,7 @@ class InvoiceController extends Controller
     public function create()
     {
         $tags = Tag::all();
-        
+
         return view('invoices.create')
                 ->with('tags', $tags);
     }
@@ -85,8 +85,11 @@ class InvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Invoice $invoice)
     {
-        //
+        $invoice->delete();
+
+        return to_route('invoices.index')
+                ->with('message.success', 'Gasto excluido com sucesso');
     }
 }

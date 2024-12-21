@@ -2,7 +2,7 @@
 
 <x-layout title="{{ $title }}">
     <x-alerts.success :successMessage="$successMessage" />
-    
+
     <x-header title="{{ $title }}" />
     <a href="{{ route('tags.create') }}" class="btn btn-success">Adicionar categoria</a>
 
@@ -30,10 +30,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item btn" href="#">
-                                <x-icons.trash_fill />
-                                <span class="px-1 py-3">Excluir</span>
-                            </a>
+                            <x-form.destroy_modal.button action="{{ route('tags.destroy', $tag->id) }}" />
                         </li>
                     </ul>
                 </div>
@@ -41,4 +38,5 @@
         </div>
         @endforeach
     </div>
+    <x-form.destroy_modal.modal message="Você tem certeza que deseja excluir essa Classificação?" />
 </x-layout>

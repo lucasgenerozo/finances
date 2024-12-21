@@ -8,6 +8,6 @@ todo
 - [x] Testar alerts
 - [X] Implementar alerts no layout?
 - [X] Relação com N:N com tags
-- [ ] Implementar exclusao de invoices
-- [ ] Implementar exclusao de tags
+- [X] Implementar exclusao de invoices
+- [X] Implementar exclusao de tags
 - [ ] Implementar "old()" nos forms

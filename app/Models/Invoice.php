@@ -27,7 +27,7 @@ class Invoice extends Model
     {
         return $this->belongsToMany(Tag::class)->pluck('description');
     }
-    
+
     public function tagsIds()
     {
         return $this->belongsToMany(Tag::class)->pluck('id');
@@ -47,6 +47,6 @@ class Invoice extends Model
     public function formattedMoneyAmount(): string
     {
         $converted_amount = doubleval($this->amount);
-        return 'R$' . number_format($converted_amount, 2, '.');
+        return 'R$ ' . number_format($converted_amount, 2, '.');
     }
 }
