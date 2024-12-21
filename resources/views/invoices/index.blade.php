@@ -3,7 +3,9 @@
 <x-layout title="{{ $title }}">
     <x-alerts.success :successMessage="$successMessage" />
 
-    <x-header title="{{ $title }}" />
+    <x-header title="{{ $title }}">
+        <a href="{{ route('home.index') }}" class="btn btn-secondary m-1">Voltar</a>
+    </x-header>
     <a href="{{ route('invoices.create') }}" class="btn btn-success">Adicionar gasto</a>
 
 

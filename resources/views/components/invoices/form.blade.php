@@ -12,12 +12,12 @@
                     class="form-control"
                     id="description"
                     name="description"
-                    value="{{ $invoice?->description }}"
+                    value="{{ old('description', $invoice?->description) }}"
                     required />
         </div>
         <div class="col-4">
             <label class="form-label" for="amount">Valor*:</label>
-            <x-invoices.amount_input value="{{ $invoice?->formattedFloatAmount() }}" required />
+            <x-invoices.amount_input value="{{ old('amount', $invoice?->formattedFloatAmount()) }}" required />
         </div>
         <div class="col-4">
             <label class="form-label"for="type">Tipo*:</label>
@@ -26,15 +26,15 @@
                     name="type"
                     required>
                 <option value="">Selecione...</option>
-                <option {{ $invoice?->isEntrance() ? 'selected' : '' }} value="i">Entrada</option>
-                <option {{ $invoice?->isEntrance() ? '' : 'selected' }} value="o">Saída</option>
+                <option {{ old('type', $invoice?->type == 'i') ? 'selected' : '' }} value="i">Entrada</option>
+                <option {{ old('type', $invoice?->type == 'o') ? '' : 'selected' }} value="o">Saída</option>
             </select>
         </div>
     </div>
     <div class="row">
         <div class="col">
             <label for="observation" class="form-label">Observação:</label>
-            <textarea class="form-select" name="observation" id="observation">{{ $invoice?->observation }}</textarea>
+            <textarea class="form-select" name="observation" id="observation">{{ old('observation', $invoice?->observation) }}</textarea>
         </div>
     </div>
     <div class="row">
@@ -44,9 +44,9 @@
         <div class="col">
             @foreach ($tags as $idx => $tag)
                 <label for="tag-{{ $idx }}" class="form-label d-flex flex-row">
-                    <input type="checkbox" 
-                           name="tags[{{ $idx }}]" 
-                           id="tag-{{ $idx }}" 
+                    <input type="checkbox"
+                           name="tags[{{ $idx }}]"
+                           id="tag-{{ $idx }}"
                            class="form-check me-1"
                            @isset($invoice)
                                @checked(\in_array($tag->id, $invoiceTagsIds))

@@ -30,7 +30,7 @@ class Invoice extends Model
 
     public function tagsIds()
     {
-        return $this->belongsToMany(Tag::class)->pluck('id');
+        return $this->belongsToMany(Tag::class)->pluck('tag_id');
     }
 
     public function isEntrance(): bool

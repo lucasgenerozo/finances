@@ -12,7 +12,7 @@
                     class="form-control"
                     id="description"
                     name="description"
-                    value="{{ $tag?->description }}"
+                    value="{{ old('description', $tag?->description) }}"
                     required />
         </div>
     </div>
